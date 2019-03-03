@@ -1,0 +1,23 @@
+//Kadane's algorithm
+public static int maxSubArray(int[] A) {
+  int maxSoFar=A[0], maxEndingHere=A[0];
+  for(int i=1; i<A.length; i++) {
+    maxEndingHere = Math.max(maxEndingHere+A[i], A[i]);
+    maxSoFar = Math.max(maxSoFar, maxEndingHere);
+  }
+  return maxSoFar;
+}
+
+
+//method 2 python
+class Solution:
+  def maxSubArray(self, A):
+    if not A:
+      return 0
+
+    curSum = maxSum = A[0]
+    for num in A[1:]:
+      curSum = max(num, curSum+num)
+      maxSum = max(maxSum, curSum)
+
+    return maxSum
